@@ -27,7 +27,7 @@ Options:
 
 `-h` print the help message 
 
-`-l` include free ligands when computing flexibility. Free ligands are defined as HETATMs that appear after the TER record in the PDB file. Note that metals will generally not be bonded unless specified in CONECT records (see option -b).
+`-l` include free ligands when computing flexibility. Free ligands are defined as HETATMs that appear after the TER record in the PDB file.
 
 `-m` only output the ANSURR scores in a text file
 
