@@ -29,13 +29,13 @@ Options:
 
 `-h` print the help message 
 
-`-l` include free ligands when computing flexibility. Free ligands are defined as HETATMs that appear after the TER record in the PDB file.
+`-l` include free ligands when computing flexibility.
 
 `-m` only output the ANSURR scores in a text file
 
-`-n` include non-standard residues when computing flexibility. Non-standard residues are defined as HETATMs that appear before the TER record in the pdb file. Note that RCI will not be calculated for non-standard residues and so they will not be used to compute validation scores. Regardless, including non-standard residues is a good idea to avoid breaks in the protein structure which would otherwise make those regions too floppy.
+`-n` include non-standard residues when computing flexibility. Note that RCI will not be calculated for non-standard residues and so they will not be used to compute validation scores. Regardless, including non-standard residues is a good idea to avoid breaks in the protein structure which would otherwise make those regions too floppy.
 
-`-o` combine chains into a single structure when calculating flexibility. This is useful when the structure is an oligomer as oligomerisation will often result in changes in flexibility. Currently this option combines all chains present in the pdb file. 
+`-o` combine chains into a single structure when calculating flexibility. This is useful when the structure is an oligomer as oligomerisation will often result in changes in flexibility.
 
 `-r` re-reference chemical shifts using PANAV before running ANSURR (recommended).
 
