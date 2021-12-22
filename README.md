@@ -9,7 +9,7 @@ ANSURR v2 is installed using pip (https://packaging.python.org/en/latest/tutoria
 
 `pip install ansurr`
 
-You will also need java in order to re-reference chemical shifts using PANAV (see https://java.com/en/download/help/download_options.html).
+You will also need java in order to re-reference chemical shifts using PANAV (https://java.com/en/download/help/download_options.html).
 
 ## Running ANSURR
 
