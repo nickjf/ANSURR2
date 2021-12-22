@@ -20,7 +20,7 @@ from ansurr.functions import check_quiet_print
 from datetime import datetime
 
 sys.tracebacklimit = 0
-ansurr_version = "0.0.43"
+ansurr_version = "2.0.43"
 
 natsort = lambda s: [int(t) if t.isdigit() else t.lower() for t in re.split('(\d+)', s)]
 
@@ -31,7 +31,7 @@ def main():
     parser.add_argument("-s", "--shifts", type=str, help="input shifts file in NEF format",required=True)
     parser.add_argument("-l", "--lig", help=" include free ligands when computing flexibility", action="store_true")
     parser.add_argument("-n", "--nonstd", help="include non-standard residues when computing flexibility", action="store_true")
-    parser.add_argument("-m", "--min", help="output only scores in a text file", action="store_true")
+    parser.add_argument("-m", "--min", help="only output the ANSURR scores in a text file", action="store_true")
     parser.add_argument("-o", "--olig", help="combine chains into a single structure when calculating flexibility", action="store_true")
     parser.add_argument("-q", "--quiet", help="supress output to the terminal", action="store_true")
     parser.add_argument("-r", "--reref", help="re-reference shifts using PANAV before calculating RCI (requires Java)",action="store_true")

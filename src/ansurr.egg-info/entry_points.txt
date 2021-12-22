@@ -1,3 +1,0 @@
-[console_scripts]
-ansurr = ansurr.ansurr:main
-
