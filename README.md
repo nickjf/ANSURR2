@@ -5,6 +5,8 @@ ANSURR uses backbone chemical shifts to validate the accuracy of NMR protein str
 
 ## Installation
 
+ANSURR v2 is installed using pip (https://packaging.python.org/en/latest/tutorials/installing-packages/). 
+
 `pip install ansurr`
 
 You will also need java in order to re-reference chemical shifts using PANAV (see https://java.com/en/download/help/download_options.html).
@@ -69,6 +71,8 @@ Contact Nick Fowler (njfowler.com) for support, queries or suggestions.
 ## Known Issues
 
 - The Mac version of ANSURR gives slightly different ANSURR scores (average difference of less than 1) due to using a different compiler to complile the underlying C++ code for computing rigidity. I'm working on a fix.
+
+- Secondary structure is currently not computed in the Mac version.
 
 ## Acknowledgements
 
