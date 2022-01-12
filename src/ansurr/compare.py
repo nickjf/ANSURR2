@@ -248,9 +248,9 @@ def compare_rci_rigidity(input_first,input_rci,pdb_chain,rci_set,rci_chain,nef_o
         with open(output_dir+'/other_output/cyrange/cyrange.json') as json_file:
             welldefined_residues = json.load(json_file)
 
-    #with resources.path("lib", "benchmarks.json") as f:
-    #    benchmark_file_path = f
-    benchmark_file_path = 'lib/benchmarks.json'
+    with resources.path("ansurr.lib", "benchmarks.json") as f:
+        benchmark_file_path = f
+    #benchmark_file_path = 'lib/benchmarks.json'
 
     with open(benchmark_file_path) as json_file:
         benchmarks = json.load(json_file)

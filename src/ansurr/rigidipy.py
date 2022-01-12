@@ -20,7 +20,7 @@ def calc_rigidity(pdb,quiet=False):
         #with resources.path("bin", "calc_rigidity_gcc4.8.4.bin") as f: 
             data_file_path = f
     elif platform == "darwin":
-        with resources.path("ansurr.bin", "calc_rigidity_OSX4.bin") as f:  # use this for the package
+        with resources.path("ansurr.bin", "calc_rigidity_OSX5.bin") as f:  # use this for the package
         #with resources.path("bin", "calc_rigidity_OSX.bin") as f:
             data_file_path = f
     elif platform == "win32":
