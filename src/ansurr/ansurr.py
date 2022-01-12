@@ -20,7 +20,7 @@ from ansurr.functions import check_quiet_print
 from datetime import datetime
 
 sys.tracebacklimit = 0
-ansurr_version = "2.0.46"
+ansurr_version = "2.0.47"
 
 natsort = lambda s: [int(t) if t.isdigit() else t.lower() for t in re.split('(\d+)', s)]
 
@@ -135,9 +135,10 @@ def main():
                         for rci in set_chain_output_rci[rci_set][rci_chain]:
                             nef_output = compare.compare_rci_rigidity(rigidity,rci,pdb_chain=chain,rci_set=rci_set,rci_chain=rci_chain,nef_output=nef_output,output_dir=output_dir,cyrange=args.welldef,quiet=args.quiet)  
         
-    export_nef.export(nef_output,output_dir=output_dir+'/ANSURR_output/'+pdb_file+'_'+shift_file,ansurr_version=ansurr_version,pdb_file=os.path.basename(path_to_pdb),shift_file=os.path.basename(path_to_shifts),reref=args.reref,lig=args.lig,nonstd=args.nonstd,olig=args.olig)
-
     if len(glob.glob(output_dir+'/ANSURR_output/out/*.out')) > 0:
+        
+        export_nef.export(nef_output,output_dir=output_dir+'/ANSURR_output/'+pdb_file+'_'+shift_file,ansurr_version=ansurr_version,pdb_file=os.path.abspath(path_to_pdb),shift_file=os.path.abspath(path_to_shifts),reref=args.reref,lig=args.lig,nonstd=args.nonstd,olig=args.olig)
+
         if os.path.exists(output_dir+'/ANSURR_output/scores.out'):
             if not args.min:
                 plot2D.plot_scores(output_dir+'/ANSURR_output/',cyrange=args.welldef)
