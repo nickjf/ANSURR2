@@ -1,5 +1,5 @@
 
-# ANSURR | Accuracy of NMR Structures Using RCI and Rigidity v2.0.43
+# ANSURR | Accuracy of NMR Structures Using RCI and Rigidity v2.0.52
 
 ANSURR uses backbone chemical shifts to validate the accuracy of NMR protein structures as described here https://www.nature.com/articles/s41467-020-20177-1. This repository contains the code required to install and run ANSURR on a Linux or a Mac. ANSURR v1.2.1 is also available on NMRbox (https://nmrbox.org/software/ansurr). Please let me know if you have any issues. 
 
@@ -70,7 +70,7 @@ Contact Nick Fowler (njfowler.com) for support, queries or suggestions.
 
 ## Known Issues
 
-- The Mac version of ANSURR gives slightly different ANSURR scores (average difference of less than 1) due to using a different compiler to compile the underlying C++ code for computing rigidity. I'm working on a fix.
+- The Mac version of ANSURR gives slightly different ANSURR scores (mean difference of 1.2) for 0.5% of models tested so far. 99.5% of models have identical ANSURR scores between the linux/Mac versions.
 
 - Secondary structure is currently not computed in the Mac version.
 
