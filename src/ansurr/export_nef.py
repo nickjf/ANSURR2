@@ -1,8 +1,7 @@
-import sys
+import sys,os
 
 import pynmrstar
-
-#from ansurr.functions import check_quiet_print
+from datetime import datetime
 
 def export(nef_output, output_dir='',ansurr_version='.',pdb_file='.',shift_file='.',reref='.',lig='.',nonstd='.',olig='.',quiet=False):
 
@@ -30,9 +29,23 @@ def export(nef_output, output_dir='',ansurr_version='.',pdb_file='.',shift_file=
 
     #print(ansurr_per_residue_lp)
 
+    nef_metadata_sf = pynmrstar.Saveframe.from_scratch("nef_nmr_meta_data", "nef_nmr_meta_data")
+
+    nef_metadata_sf.add_tag("sf_category", "nef_nmr_meta_data")
+    nef_metadata_sf.add_tag("sf_framecode", "nef_nmr_meta_data")
+    nef_metadata_sf.add_tag("format_name", "nmr_exchange_format")
+    nef_metadata_sf.add_tag("format_version", "1.1")
+
+    nef_metadata_sf.add_tag("program_name", "ansurr")
+    nef_metadata_sf.add_tag("program_version", ansurr_version)
+
+    now = datetime.now().isoformat()
+    nef_metadata_sf.add_tag("creation_date", now)
+    nef_metadata_sf.add_tag("uuid", "ansurr-"+now)
+
+
     ansurr_sf = pynmrstar.Saveframe.from_scratch("ansurr", "ansurr")
           
-            
     ansurr_sf.add_tag("sf_category", "ansurr")
     ansurr_sf.add_tag("sf_framecode", "ansurr")
 
@@ -67,8 +80,18 @@ def export(nef_output, output_dir='',ansurr_version='.',pdb_file='.',shift_file=
     ansurr_sf.add_loop(ansurr_per_residue_lp)
     
     # Now write out our saveframe to a file. Optionally specify format="json" to write in JSON format.
-    ansurr_sf.write_to_file(output_dir+"_ansurr.nef")
-    ansurr_sf.write_to_file(output_dir+"_ansurr.json", format_="json")
+    nef_metadata_sf.write_to_file(output_dir+"_ansurr.nef")
+    ansurr_sf.write_to_file(output_dir+"_ansurr2.nef")
+    #nef_metadata_sf.write_to_file(output_dir+"_ansurr.json", format_="json")
+    #ansurr_sf.write_to_file(output_dir+"_ansurr.json", format_="json")
+
+    out = open(output_dir+"_ansurr.nef","a")
+    out.write('\n')
+    for line in open(output_dir+"_ansurr2.nef",'r'):
+        out.write(line)
+    out.close()
+
+    os.remove(output_dir+"_ansurr2.nef")
 
 
 def main():
