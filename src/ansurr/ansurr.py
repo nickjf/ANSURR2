@@ -20,7 +20,7 @@ from ansurr.functions import check_quiet_print
 from datetime import datetime
 
 sys.tracebacklimit = 0
-ansurr_version = "2.0.54"
+ansurr_version = "2.0.55"
 
 natsort = lambda s: [int(t) if t.isdigit() else t.lower() for t in re.split('(\d+)', s)]
 

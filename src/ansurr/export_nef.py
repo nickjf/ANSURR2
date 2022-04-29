@@ -49,7 +49,7 @@ def export(nef_output, output_dir='',ansurr_version='.',pdb_file='.',shift_file=
     ansurr_sf.add_tag("sf_category", "ansurr")
     ansurr_sf.add_tag("sf_framecode", "ansurr")
 
-    ansurr_sf.add_tag("_ansurr.ansurr_version", "ansurr")
+    #ansurr_sf.add_tag("_ansurr.ansurr_version", "ansurr")
     ansurr_sf.add_tag("_ansurr.panav_version", "ansurr")
     ansurr_sf.add_tag("_ansurr.dssp_version", "ansurr")
     ansurr_sf.add_tag("_ansurr.cyrange_version", "ansurr")

@@ -50,7 +50,8 @@ def plot_scores(output_dir='',cyrange=False):
 			plt.cla()
 			plt.scatter(data[pdb][shifts]['rmsd'], data[pdb][shifts]['corr'], c='black',s=8)
 
-			labels = [plt.text(data[pdb][shifts]['rmsd'][i], data[pdb][shifts]['corr'][i], data[pdb][shifts]['model'][i],
+			if len(data[pdb][shifts]['rmsd']) <= 100: # don't label points if there are more than 100
+				labels = [plt.text(data[pdb][shifts]['rmsd'][i], data[pdb][shifts]['corr'][i], data[pdb][shifts]['model'][i],
 							   ha='center', va='center', color='blue',size=6) for i in range(len(data[pdb][shifts]['rmsd']))]
 
 			plt.ylabel('correlation score',size=12)
@@ -65,7 +66,8 @@ def plot_scores(output_dir='',cyrange=False):
 				shift_perc_out = str(shift_perc)
 
 			plt.title('Structure: '+pdb+'\nShifts: '+shifts+' Shift%: '+shift_perc_out)
-			at.adjust_text(labels,expand_text=(1.75, 1.75), expand_points=(1.75, 1.75),arrowprops=dict(arrowstyle='->', color='red', alpha=0.6, linewidth=0.5))
+			if len(data[pdb][shifts]['rmsd']) <= 100: # don't label points if there are more than 100
+				at.adjust_text(labels,expand_text=(1.75, 1.75), expand_points=(1.75, 1.75),arrowprops=dict(arrowstyle='->', color='red', alpha=0.6, linewidth=0.5))
 			plt.tight_layout()
 			plt.savefig(output_dir+pdb+'_'+shifts+'.png',dpi=300)
 
@@ -73,7 +75,8 @@ def plot_scores(output_dir='',cyrange=False):
 			if cyrange:
 				plt.cla()
 				plt.scatter(data[pdb][shifts]['rmsd_welldefined'], data[pdb][shifts]['corr_welldefined'], c='black',s=8)
-				labels_cyrange = [plt.text(data[pdb][shifts]['rmsd_welldefined'][i], data[pdb][shifts]['corr_welldefined'][i], data[pdb][shifts]['model'][i],
+				if len(data[pdb][shifts]['rmsd']) <= 100: # don't label points if there are more than 100
+					labels_cyrange = [plt.text(data[pdb][shifts]['rmsd_welldefined'][i], data[pdb][shifts]['corr_welldefined'][i], data[pdb][shifts]['model'][i],
 							   ha='center', va='center', color='blue',size=6) for i in range(len(data[pdb][shifts]['rmsd_welldefined']))]
 
 				plt.ylabel('correlation score',size=12)
@@ -88,7 +91,8 @@ def plot_scores(output_dir='',cyrange=False):
 					shift_perc_out = str(shift_perc)
 
 				plt.title('Structure: '+pdb+' (WD)\nShifts: '+shifts+' Shift%: '+shift_perc_out)
-				at.adjust_text(labels_cyrange,expand_text=(1.75, 1.75), expand_points=(1.75, 1.75),arrowprops=dict(arrowstyle='->', color='red', alpha=0.6, linewidth=0.5))
+				if len(data[pdb][shifts]['rmsd']) <= 100: # don't label points if there are more than 100
+					at.adjust_text(labels_cyrange,expand_text=(1.75, 1.75), expand_points=(1.75, 1.75),arrowprops=dict(arrowstyle='->', color='red', alpha=0.6, linewidth=0.5))
 				plt.tight_layout()
 				plt.savefig(output_dir+pdb+'_'+shifts+'_welldefined.png',dpi=300)
 
