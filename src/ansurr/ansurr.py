@@ -7,6 +7,7 @@ import argparse
 import shutil
 import glob
 import re
+import shlex
 
 from ansurr import rci_nef
 from ansurr import rigidipy
@@ -20,15 +21,15 @@ from ansurr.functions import check_quiet_print
 from datetime import datetime
 
 sys.tracebacklimit = 0
-ansurr_version = "2.0.55"
+ansurr_version = "2.1.0"
 
 natsort = lambda s: [int(t) if t.isdigit() else t.lower() for t in re.split('(\d+)', s)]
 
-def main():
+def main(argument_string=""):
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--pdb", type=str, help="input PDB file",required=True)
-    parser.add_argument("-s", "--shifts", type=str, help="input shifts file in NEF format",required=True)
+    parser.add_argument("-s", "--shifts", type=str, help="input shifts file in NMR-Star v3 or NEF format",required=True)
     parser.add_argument("-l", "--lig", help=" include free ligands when computing flexibility", action="store_true")
     parser.add_argument("-n", "--nonstd", help="include non-standard residues when computing flexibility", action="store_true")
     parser.add_argument("-m", "--min", help="only output the ANSURR scores in a text file", action="store_true")
@@ -37,7 +38,12 @@ def main():
     parser.add_argument("-r", "--reref", help="re-reference shifts using PANAV before calculating RCI (requires Java)",action="store_true")
     parser.add_argument("-w", "--welldef", help="compute ANSURR scores for only well-defined residues identified by CYRANGE", action="store_true")
     parser.add_argument("-v", "--version", action='version', version='\nANSURR | Accuracy of NMR Structures Using RCI and Rigidity v'+ansurr_version+' | citation: https://doi.org/10.1038/s41467-020-20177-1')
-    args = parser.parse_args()
+
+    if argument_string == "":
+        args = parser.parse_args()
+
+    else:
+        args = parser.parse_args(shlex.split(argument_string))
 
     path_to_shifts = args.shifts
     path_to_pdb = args.pdb # need to check that file looks like a PDB file
